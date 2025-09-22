@@ -1,0 +1,104 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-09-21T23:45:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2024.5.0",
+  "resources": [
+    {
+      "_id": "wrk_insurance_api",
+      "parentId": null,
+      "modified": 0,
+      "created": 0,
+      "name": "Insurance API",
+      "description": "Coleção para testar a API de Apólices",
+      "_type": "workspace"
+    },
+    {
+      "_id": "env_insurance_api",
+      "parentId": "wrk_insurance_api",
+      "modified": 0,
+      "created": 0,
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:8080"
+      },
+      "_type": "environment"
+    },
+    {
+      "_id": "fld_policies",
+      "parentId": "wrk_insurance_api",
+      "modified": 0,
+      "created": 0,
+      "name": "Policies",
+      "description": "",
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_create_policy",
+      "parentId": "fld_policies",
+      "modified": 0,
+      "created": 0,
+      "name": "Criar Apólice",
+      "description": "Cria uma nova solicitação de apólice.",
+      "method": "POST",
+      "url": "{{ base_url }}/policies",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"customer_id\": \"adc56d77-348c-4bf0-908f-22d402ee715c\",\n  \"product_id\": \"1b2da7cc-b367-4196-8a78-9cfeec21f587\",\n  \"category\": \"AUTO\",\n  \"salesChannel\": \"MOBILE\",\n  \"paymentMethod\": \"CREDIT_CARD\",\n  \"total_monthly_premium_amount\": 75.25,\n  \"insured_amount\": 275000.50,\n  \"coverages\": {\n    \"Roubo\": 100000.25,\n    \"Perda Total\": 100000.25,\n    \"Colisão com Terceiros\": 75000.00\n  },\n  \"assistances\": [\n    \"Guincho até 250km\",\n    \"Troca de Óleo\",\n    \"Chaveiro 24h\"\n  ]\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": 100,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_validate_policy",
+      "parentId": "fld_policies",
+      "modified": 0,
+      "created": 0,
+      "name": "Validar Apólice (Fraude)",
+      "description": "Valida a apólice (simula resposta da API de fraude). Substitua :id pelo id retornado na criação.",
+      "method": "POST",
+      "url": "{{ base_url }}/policies/:id/validate",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"orderId\": \":id\",\n  \"customerId\": \"adc56d77-348c-4bf0-908f-22d402ee715c\",\n  \"analyzedAt\": \"2025-09-21T23:30:00Z\",\n  \"classification\": \"HIGH_RISK\",\n  \"occurrences\": []\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": 200,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_policy",
+      "parentId": "fld_policies",
+      "modified": 0,
+      "created": 0,
+      "name": "Consultar Apólice",
+      "description": "Consulta uma apólice pelo id. Substitua :id pelo id desejado.",
+      "method": "GET",
+      "url": "{{ base_url }}/policies/:id",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": 300,
+      "isPrivate": false,
+      "_type": "request"
+    }
+  ]
+}
