@@ -65,24 +65,6 @@ services:
     networks:
       - insurance-net
 
-
-#  insurance-api:
-#    build: .
-#    depends_on:
-#      - postgres
-#      - kafka
-#      - mockserver
-#    environment:
-#      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/insurance
-#      SPRING_DATASOURCE_USERNAME: insurance_user
-#      SPRING_DATASOURCE_PASSWORD: insurance_pass
-#      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
-#      FRAUD_API_URL: http://mockserver:1080
-#    ports:
-#      - "8080:8080"
-#    networks:
-#      - insurance-net
-
 volumes:
   postgres_data:
 

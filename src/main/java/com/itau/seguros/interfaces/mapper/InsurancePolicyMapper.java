@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @Component
 public class InsurancePolicyMapper {
 
-    public static InsurancePolicy toModel(InsurancePolicyRequestDTO dto) {
+    public InsurancePolicy toModel(InsurancePolicyRequestDTO dto) {
         InsurancePolicy entity = new InsurancePolicy();
         entity.setCustomerId(dto.getCustomerId());
         entity.setProductId(dto.getProductId());
@@ -30,7 +30,7 @@ public class InsurancePolicyMapper {
         return entity;
     }
 
-    public static InsurancePolicyResponseDTO toResponseDto(Optional<InsurancePolicy> model) {
+    public InsurancePolicyResponseDTO toResponseDto(Optional<InsurancePolicy> model) {
         InsurancePolicy policy = model.orElseThrow(() -> new IllegalArgumentException("Apólice não encontrada"));
 
         return InsurancePolicyResponseDTO.builder()

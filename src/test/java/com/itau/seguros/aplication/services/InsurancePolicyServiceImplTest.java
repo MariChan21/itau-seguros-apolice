@@ -1,6 +1,7 @@
 package com.itau.seguros.aplication.services;
 
 import com.itau.seguros.domain.enuns.CategoryEnum;
+import com.itau.seguros.domain.enuns.PaymentMethodEnum;
 import com.itau.seguros.domain.enuns.PolicyStatusEnum;
 import com.itau.seguros.domain.model.InsurancePolicy;
 import com.itau.seguros.infrastructure.repository.InsurancePolicyRepository;
@@ -16,10 +17,10 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class InsurancePolicyServiceTest {
+class InsurancePolicyServiceImplTest {
 
     @InjectMocks
-    private InsurancePolicyService service;
+    private InsurancePolicyServiceImpl service;
 
     @Mock
     private InsurancePolicyRepository repository;
@@ -37,6 +38,7 @@ class InsurancePolicyServiceTest {
         policy.setCategory(category);
         policy.setInsuredAmount(insuredAmount);
         policy.setStatus(PolicyStatusEnum.RECEIVED);
+        policy.setPaymentMethod(PaymentMethodEnum.CREDIT_CARD);
         policy.setCreatedAt(LocalDateTime.now());
         policy.setTotalMonthlyPremiumAmount(BigDecimal.TEN);
         policy.setCoverages(new HashMap<>());

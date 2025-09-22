@@ -39,7 +39,10 @@ public class InsurancePolicy {
     private LocalDateTime finishedAt;
     private BigDecimal totalMonthlyPremiumAmount;
     private BigDecimal insuredAmount;
-    @Transient
+    @ElementCollection
+    @CollectionTable(name = "insurance_policy_coverages", joinColumns = @JoinColumn(name = "policy_id"))
+    @MapKeyColumn(name = "coverage_type")
+    @Column(name = "coverage_amount")
     private Map<String, BigDecimal> coverages;
     private List<String> assistances;
     @OneToMany(mappedBy = "insurancePolicy", cascade = CascadeType.ALL, orphanRemoval = true)

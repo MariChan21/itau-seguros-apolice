@@ -2,6 +2,7 @@ package com.itau.seguros.interfaces.mapper;
 
 import com.itau.seguros.domain.enuns.CategoryEnum;
 import com.itau.seguros.domain.enuns.PaymentMethodEnum;
+import com.itau.seguros.domain.enuns.PolicyStatusEnum;
 import com.itau.seguros.domain.enuns.SalesChannelEnum;
 import com.itau.seguros.domain.model.InsurancePolicy;
 import com.itau.seguros.interfaces.dto.InsurancePolicyRequestDTO;
@@ -56,6 +57,7 @@ class InsurancePolicyMapperTest {
         model.setInsuredAmount(new BigDecimal("300000.00"));
         model.setCoverages(Map.of("Perda Total", new BigDecimal("100000")));
         model.setAssistances(List.of("Chaveiro"));
+        model.setStatus(PolicyStatusEnum.APPROVED);
 
         InsurancePolicyResponseDTO dto = mapper.toResponseDto(Optional.of(model));
 
